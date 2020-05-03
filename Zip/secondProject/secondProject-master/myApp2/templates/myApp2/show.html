@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <h1>Student Data</h1>
+    <div class="main">
+      <table>
+        <thead>
+          <tr>
+            <th>Sl.No</th>
+            <th>Emp ID</th>
+            <th>Emp Name</th>
+            <th>Branch</th>
+            <th>Age</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for info in data %}
+            <tr>
+              <td>{{info.id}}</td>
+              <td>{{info.stuid}}</td>
+              <td><a href="{% url 'edit' info.id %}">{{info.stuName}}</a></td>
+              <td>{{info.branch}}</td>
+              <td>{{info.age}}</td>
+              <td><a class="delete" href="{% url 'delete' info.id %}">Delete</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

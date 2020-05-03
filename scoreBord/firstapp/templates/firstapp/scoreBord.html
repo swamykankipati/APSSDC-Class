@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title> ::Score:: </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel='stylesheet' type="text/stylesheet" href="{% static 'css/styles.css' %}">
+		<script type='text/javascript' src="{% static 'js/main.js'%}"></script>
+		<style>
+			.formsection {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				margin-left: auto;
+				margin-right: auto;
+				width: 80%;
+				box-shadow: 8px 8px 8px 8px #ddd;
+			}
+			.main1 {
+				width: 40%;
+				box-shadow: 8px 8px 8px 8px #ddd;
+				border: 3px 3px 3px 3px solid #ddd;
+				text-align: center;
+				width: 35%;
+				margin: 1%;
+				padding: 1%;
+			}
+			.score {
+				font-size: 53px;
+				color: #000fff;
+				width: 90%;
+				border: 0px #ddd;
+				text-align: center;
+				font-style: oblique;
+				font-weight: bold;
+				margin: 1%;
+				padding: 1%;
+			}
+			img {
+				width: 100%;
+			}
+			.button {
+				background-color: #000000;
+				color: #ffffff;
+				font-size: 23px;
+				font-weight: bold;
+			}
+			h1 {
+				text-align: center;
+				color: #000fff;
+			}
+			@media only screen and (min-width:320px) and (max-width: 480px){
+			 .main1 {
+				 width: 80%;
+			 }
+			}
+
+
+			/*Medium scale devices*/
+			@media only screen and (min-width:481px) and (max-width: 768px){
+				.main1 {
+ 				 width: 40%;
+ 			 }
+
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="main">
+				<h1> Score Bord </h1>
+			<form class="formsection" action="{% url 'scoreBord' %}" method='POST'>
+				{% csrf_token %}
+				<div class="main1">
+					<img src="{% static 'img/team1.png'%}" alt="Taem 1 Image">
+					{% if t1val is None %}
+					<input class="score" type='text' name='t1val' value='0' readonly=''>
+
+					{% else %}
+					<input class="score" type='text' name='t1val'  value='{{ t1val }}' readonly=''>
+					{% endif %}
+					<input class="button" type='submit' name='team1' value="Team1">
+				</div>
+				<div class="main1">
+					<img src="{% static 'img/team2.png'%}" alt="Team 2 image">
+					{% if t2val is None %}
+					<input class="score" type='text' name='t2val' value='0' readonly=''>
+
+					{% else %}
+					<input class="score" type='text' name='t2val'  value='{{ t2val }}' readonly=''>
+					{% endif %}
+					<input class="button" type='submit' name='team2' value="Team2">
+				</div>
+			</form>
+		</div>
+
+	</body>
+</html>
