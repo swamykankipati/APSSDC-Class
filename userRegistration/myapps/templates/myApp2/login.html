@@ -11,10 +11,40 @@
 	<!-- <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"> -->
 
 	</script>
+	<style type="text/css">
+		label{
+			color: blue;
+
+		}
+		input[type=submit],button,a{
+	background: #EB3B88;
+	border: 1px solid #C94A81;
+	padding: 5px 15px 5px 15px;
+	color: #FFCBE2;
+	box-shadow: inset -1px -1px 3px #FF62A7;
+}
+.required{
+	color:red;
+	font-weight:normal;
+}input[type=text],input[type=password]{
+	border-radius: 3px;
+	border: 1px solid #FFC2DC;
+	outline: none;
+	color: #F072A9;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px #FFD5E7;
+	background: #FFEFF6;
+	width:50%;
+	}
+	</style>
+
+
+
 </head>
 <body>
 	<h1>Login Page</h1>
 	<div class="main">
+		<form>
 		<h1>Login Page</h1>
 		<form action="{% url 'login' %}" method="POST">
 			{% csrf_token %}
@@ -28,7 +58,7 @@
 			</div>
 			<div class="footr">
 				<input class="buttonsty" type="submit" name="submit" value="Login">
-				<a href="{% url 'register' %}"><input class="buttonsty" value="Sign Up"></a>
+				<button class="buttonsty"><a href="{% url 'register' %}">SingUp</a></button>
 
 			</div>
 
